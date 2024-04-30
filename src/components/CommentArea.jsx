@@ -59,8 +59,12 @@ class CommentArea extends Component {
       })
   }
 
-  componentDidMount() {
-    this.fetchReview(this.props.elementId)
+  componentDidMount() {}
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.elementId !== this.props.elementId) {
+      this.fetchReview(this.props.elementId)
+    }
   }
 
   render() {

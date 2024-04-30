@@ -1,19 +1,20 @@
 import { Component } from "react"
 import { Badge, Card, Col } from "react-bootstrap"
-import CommentArea from "./CommentArea"
 
 class SingleBooks extends Component {
-  state = { selected: false }
+  // state = { selected: false }
 
   render() {
     return (
       <Col key={this.props.bookIns.asin}>
-        <Card className={this.state.selected && "border border-danger"}>
+        <Card
+          className={this.props.bookIns.asin === this.props.selectedAsin ? "border border-danger" : "border border-secondary"}
+        >
           <Card.Img
             variant='top'
             src={this.props.bookIns.img}
             onClick={() => {
-              this.setState({ selected: !this.state.selected })
+              this.props.setNewAsin(this.props.bookIns.asin)
             }}
           />
           <Card.Body className='d-flex flex-column justify-content-between bg-secondary'>
@@ -22,11 +23,6 @@ class SingleBooks extends Component {
               <span>{this.props.bookIns.category.charAt(0).toUpperCase() + this.props.bookIns.category.slice(1)}</span>
               <Badge bg='success'>{this.props.bookIns.price}</Badge>
             </Card.Text>
-            {this.state.selected === true ? (
-              <CommentArea elementId={this.props.bookIns.asin} />
-            ) : (
-              console.log("Elemento non selezionato")
-            )}
           </Card.Body>
         </Card>
       </Col>

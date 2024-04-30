@@ -19,7 +19,7 @@ class AllTheBooks extends Component {
       <Container>
         <ButtonGroup aria-label='Basic example' className='d-flex gap-1 my-2'>
           <Button variant='secondary' onClick={() => this.setState({ genre: fantasy })}>
-            Fantasy{" "}
+            Fantasy
           </Button>
           <Button variant='secondary' onClick={() => this.setState({ genre: history })}>
             History
